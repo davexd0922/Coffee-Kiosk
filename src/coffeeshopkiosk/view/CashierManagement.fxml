@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="coffeeshopkiosk.controller.CashierManagementController">
+    <padding>
+        <Insets bottom="18.0" left="18.0" right="18.0" top="18.0" />
+    </padding>
+    <top>
+        <Label styleClass="screen-title" text="Cashier Management" />
+    </top>
+    <center>
+        <HBox spacing="16.0">
+            <VBox prefWidth="340.0" spacing="12.0" styleClass="form-panel">
+                <Label styleClass="section-title" text="Cashier Account" />
+                <GridPane hgap="8.0" vgap="10.0">
+                    <Label text="Full Name" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <TextField fx:id="fullNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <Label text="Username" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <Label text="Password" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <PasswordField fx:id="passwordField" promptText="Required for new or reset" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                </GridPane>
+                <CheckBox fx:id="activeCheckBox" text="Active cashier account" />
+                <HBox spacing="8.0">
+                    <Button onAction="#saveCashier" styleClass="primary-button" text="Save" />
+                    <Button onAction="#changePassword" text="Change Password" />
+                </HBox>
+                <HBox spacing="8.0">
+                    <Button onAction="#deactivateCashier" styleClass="danger-button" text="Deactivate" />
+                    <Button onAction="#clearForm" text="Clear" />
+                </HBox>
+            </VBox>
+            <TableView fx:id="cashierTable" HBox.hgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="fullNameColumn" prefWidth="230.0" text="Full Name" />
+                    <TableColumn fx:id="usernameColumn" prefWidth="170.0" text="Username" />
+                    <TableColumn fx:id="activeColumn" prefWidth="100.0" text="Active" />
+                </columns>
+            </TableView>
+        </HBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="coffeeshopkiosk.controller.PosController">
+    <padding>
+        <Insets bottom="18.0" left="18.0" right="18.0" top="18.0" />
+    </padding>
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="12.0">
+            <Label styleClass="screen-title" text="Point of Sale" />
+            <ComboBox fx:id="categoryComboBox" onAction="#filterProducts" prefWidth="220.0" />
+        </HBox>
+    </top>
+    <center>
+        <HBox spacing="16.0">
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" HBox.hgrow="ALWAYS">
+                <content>
+                    <FlowPane fx:id="menuFlowPane" hgap="12.0" prefWrapLength="560.0" vgap="12.0">
+                        <padding>
+                            <Insets bottom="14.0" left="2.0" right="10.0" top="14.0" />
+                        </padding>
+                    </FlowPane>
+                </content>
+            </ScrollPane>
+            <VBox prefWidth="390.0" spacing="10.0">
+                <Label styleClass="section-title" text="Order Summary" />
+                <TableView fx:id="cartTable" prefHeight="250.0">
+                    <columns>
+                        <TableColumn fx:id="itemColumn" prefWidth="125.0" text="Item" />
+                        <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Price" />
+                        <TableColumn fx:id="quantityColumn" prefWidth="60.0" text="Qty" />
+                        <TableColumn fx:id="totalColumn" prefWidth="90.0" text="Total" />
+                    </columns>
+                </TableView>
+                <HBox spacing="8.0">
+                    <Button onAction="#increaseQuantity" text="+" />
+                    <Button onAction="#decreaseQuantity" text="-" />
+                    <Button onAction="#removeSelected" text="Remove" />
+                    <Button onAction="#clearCart" text="Clear" />
+                </HBox>
+                <GridPane hgap="8.0" vgap="8.0">
+                    <Label text="Discount" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <TextField fx:id="discountField" promptText="0.00" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <Label text="Cash" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <TextField fx:id="cashField" promptText="0.00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <Label text="Subtotal" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <Label fx:id="subtotalLabel" styleClass="amount-label" text="PHP 0.00" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <Label text="Total" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                    <Label fx:id="totalLabel" styleClass="total-label" text="PHP 0.00" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    <Label text="Change" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                    <Label fx:id="changeLabel" styleClass="amount-label" text="PHP 0.00" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                </GridPane>
+                <Button maxWidth="Infinity" onAction="#checkout" styleClass="primary-button" text="Checkout" />
+                <TextArea fx:id="receiptArea" editable="false" prefHeight="150.0" promptText="Receipt preview" />
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

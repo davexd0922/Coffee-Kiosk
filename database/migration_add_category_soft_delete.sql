@@ -1,0 +1,6 @@
+ALTER TABLE categories
+ADD COLUMN IF NOT EXISTS active BOOLEAN NOT NULL DEFAULT TRUE;
+
+UPDATE categories
+SET active = TRUE
+WHERE active IS NULL;

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="coffeeshopkiosk.controller.ReportsController">
+    <padding>
+        <Insets bottom="18.0" left="18.0" right="18.0" top="18.0" />
+    </padding>
+    <top>
+        <VBox spacing="10.0">
+            <Label styleClass="screen-title" text="Sales Reports" />
+            <HBox alignment="CENTER_LEFT" spacing="8.0">
+                <DatePicker fx:id="startDatePicker" />
+                <DatePicker fx:id="endDatePicker" />
+                <Button onAction="#today" text="Daily" />
+                <Button onAction="#thisWeek" text="Weekly" />
+                <Button onAction="#thisMonth" text="Monthly" />
+                <Button onAction="#generateReport" styleClass="primary-button" text="Generate" />
+                <Label fx:id="revenueLabel" styleClass="total-label" text="PHP 0.00" />
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <HBox spacing="16.0">
+            <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                <Label styleClass="section-title" text="Sales by Day" />
+                <TableView fx:id="salesTable">
+                    <columns>
+                        <TableColumn fx:id="dayColumn" prefWidth="180.0" text="Date" />
+                        <TableColumn fx:id="ordersColumn" prefWidth="120.0" text="Orders" />
+                        <TableColumn fx:id="revenueColumn" prefWidth="150.0" text="Revenue" />
+                    </columns>
+                </TableView>
+            </VBox>
+            <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                <Label styleClass="section-title" text="Best Sellers" />
+                <TableView fx:id="bestSellerTable">
+                    <columns>
+                        <TableColumn fx:id="productColumn" prefWidth="200.0" text="Product" />
+                        <TableColumn fx:id="quantityColumn" prefWidth="120.0" text="Quantity" />
+                        <TableColumn fx:id="productRevenueColumn" prefWidth="150.0" text="Revenue" />
+                    </columns>
+                </TableView>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>
